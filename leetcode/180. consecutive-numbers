@@ -1,0 +1,4 @@
+with cte as
+(select id,num, lead(num) over() as next1, lead(num,2) over() as next2 from logs)
+
+select distinct num as consecutiveNums from cte where num=next1 and num=next2;
